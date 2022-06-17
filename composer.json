@@ -1,0 +1,16 @@
+{
+    "name": "redbullmarky/flow",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Flow\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mark Grainger"
+        }
+    ],
+    "require": {}
+}
