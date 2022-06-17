@@ -2,7 +2,7 @@
 
 namespace Flow;
 
-use Exception;
+use Flow\FlowException;
 
 class Runner
 {
@@ -22,7 +22,7 @@ class Runner
 	public function addNode(NodeInterface $node): NodeInterface
 	{
 		if ($node->getInputs()) {
-			throw new Exception('Cannot add root node that requires input');
+			throw new FlowException('Cannot add root node that requires input');
 		}
 		return $this->rootNodes[$node->getIdentifier()] = $node;
 	}
