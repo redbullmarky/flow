@@ -2,29 +2,9 @@
 
 namespace Flow\Node;
 
+use FlowJS\FlowJS;
 use Flow\FlowException;
-use Flow\NodeInterface;
-use V8Js;
 use V8JsScriptException;
-
-class FlowJs extends V8Js
-{
-	private $host;
-
-	public function __construct(NodeInterface $host, string $namespace)
-	{
-		parent::__construct($namespace);
-		$this->host = $host;
-	}
-
-	public function getInputValue($key) {
-		return $this->host->getInputValue($key);
-	}
-
-	public function setOutputValue($key, $value) {
-		$this->host->setOutputValue($key, $value);
-	}
-}
 
 class CodeNode extends AbstractNode
 {
@@ -34,11 +14,13 @@ class CodeNode extends AbstractNode
 	private function getCodeInstance()
 	{
 		if (!$this->instance) {
-			$this->v8js = new FlowJs($this, 'flow');
+			$this->v8js = new FlowJS('flow');
+            $this->v8js->node = $this;
 
 			try {
-				$this->instance = $this->v8js->executeString('(() => { ' . $this->getCode() . ' })();');
-			} catch (V8JsScriptException $e) {
+				$setup = $this->v8js->executeString('((node) => { ' . $this->getCode() . ' });');
+                $this->instance = $setup($this);
+            } catch (V8JsScriptException $e) {
 				throw new FlowException('Error in the code');
 			}
 		}
@@ -64,6 +46,7 @@ class CodeNode extends AbstractNode
 	private function getCode() {
 		return <<<EOF
 return {
+
 	getInputs: () => {
 		return {
 			foo: 'any'
@@ -77,7 +60,7 @@ return {
 	},
 
 	execute: () => {
-		flow.setOutputValue('bar', 'up the titties!');
+		node.setOutputValue('bar', 'up the titties!');
 	}
 }
 EOF;
