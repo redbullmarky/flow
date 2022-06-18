@@ -1,0 +1,63 @@
+{
+	"nodes": [
+		{
+            "id": "rnd1",
+            "type": "RandomNumber",
+            "connections": [
+                { "node": "code", "map": "number:foo" },
+                { "node": "adder", "map": "number:number1" }
+            ]
+        },
+		{
+            "id": "rnd2",
+            "type": "RandomNumber",
+            "connections": [
+                { "node": "adder", "map": "number:number2" }
+            ]
+        },
+		{
+            "id": "rnd3",
+            "type": "RandomNumber",
+            "connections": [
+                { "node": "subber", "map": "number:number1" }
+            ]
+        },
+		{
+            "id": "adder",
+            "type": "Adder",
+            "connections": [
+                { "node": "subber", "map": "result:number2" },
+                { "node": "dump2", "map": "result:input" }
+            ]
+        },
+		{
+            "id": "subber",
+            "type": "Subtractor",
+            "connections": [
+                { "node": "dump3", "map": "result:input" }
+            ]
+        },
+		{
+            "id": "code",
+            "type": "Code",
+            "connections": [
+                { "node": "dump1", "map": "bar:input" }
+            ]
+        },
+		{
+            "id": "dump1",
+            "type": "Dump",
+            "connections": []
+        },
+		{
+            "id": "dump2",
+            "type": "Dump",
+            "connections": []
+        },
+		{
+            "id": "dump3",
+            "type": "Dump",
+            "connections": []
+        }
+	]
+}
