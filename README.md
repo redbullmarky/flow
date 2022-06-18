@@ -1,7 +1,7 @@
 # Flow
 Experimenting with node-based programming
 
-# Example
+## Example
 
 ```php
 <?php
