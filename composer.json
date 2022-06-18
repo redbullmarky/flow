@@ -12,7 +12,10 @@
             "name": "Mark Grainger"
         }
     ],
-    "require": {
-        "theboredfish/flowjs": "@dev"
+	"scripts": {
+		"test": "phpunit ./tests --testdox"
+	},
+    "require-dev": {
+        "phpunit/phpunit": "^9"
     }
 }
