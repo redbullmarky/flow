@@ -46,7 +46,6 @@ class CodeNode extends AbstractNode
 	private function getCode() {
 		return <<<EOF
 return {
-
 	getInputs: () => {
 		return {
 			foo: 'any'
@@ -60,7 +59,7 @@ return {
 	},
 
 	execute: () => {
-		node.setOutputValue('bar', 'up the titties!');
+		node.setOutputValue('bar', 'up the titties! `foo` was:' + JSON.stringify(node.getInputValue('foo')));
 	}
 }
 EOF;
