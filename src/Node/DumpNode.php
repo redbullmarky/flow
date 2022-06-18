@@ -4,15 +4,15 @@ namespace Flow\Node;
 
 class DumpNode extends AbstractNode
 {
-	public function getInputs(): array
-	{
-		return [
-			'input' => 'any'
-		];
-	}
+    public function getInputs(): array
+    {
+        return [
+            'input' => 'any'
+        ];
+    }
 
-	public function execute(): void
-	{
-		dump($this->getInputValue('input'));
-	}
+    public function execute(): void
+    {
+        dump($this->getInputValue('input'));
+    }
 }

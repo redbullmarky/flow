@@ -9,24 +9,24 @@ use Flow\FlowException;
 
 class LoopNode extends AbstractNode
 {
-	public function getInputs(): array
-	{
-		return [
-			'input' => 'any',
-			'iterations' => 'integer'
-		];
-	}
+    public function getInputs(): array
+    {
+        return [
+            'input' => 'any',
+            'iterations' => 'integer'
+        ];
+    }
 
-	public function getOutputs(): array
-	{
-		return [
-			'loopack' => 'any', // data comes out here when there are still iterations left
-			'output' => 'any' // data comes out here when it's all done
-		];
-	}
+    public function getOutputs(): array
+    {
+        return [
+            'loopack' => 'any', // data comes out here when there are still iterations left
+            'output' => 'any' // data comes out here when it's all done
+        ];
+    }
 
-	public function execute(): void
-	{
-		throw new FlowException('LoopNode not yet done');
-	}
+    public function execute(): void
+    {
+        throw new FlowException('LoopNode not yet done');
+    }
 }
