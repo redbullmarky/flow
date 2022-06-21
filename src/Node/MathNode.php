@@ -2,7 +2,7 @@
 
 namespace Flow\Node;
 
-class AdderNode extends AbstractNode
+class MathNode extends AbstractNode
 {
     public function getInputs(): array
     {
@@ -19,10 +19,22 @@ class AdderNode extends AbstractNode
         ];
     }
 
+    public function getOptions(): array
+    {
+        return [
+            'operator' => [] // todo sort the option settings out
+        ];
+    }
+
     public function execute(): void
     {
         $number1 = $this->getInputValue('number1');
         $number2 = $this->getInputValue('number2');
-        $this->setOutputValue('result', $number1 + $number2);
+        $operator = $this->getOptionValue('operator');
+        $result = null;
+
+        $expression = "\$result = {$number1} {$operator} {$number2};";
+        eval($expression);
+        $this->setOutputValue('result', $result);
     }
 }

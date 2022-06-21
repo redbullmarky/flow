@@ -38,6 +38,13 @@ class Runner
             $obj = new $class($node['id']);
             $nodes[$node['id']] = $obj;
             $this->addNode($obj);
+
+            if (!empty($node['options'])) {
+                foreach ($node['options'] as $oname => $oval) {
+                    $obj->setOptionValue($oname, $oval);
+                }
+            }
+
         }
         // second pass, the connections
         foreach ($config['nodes'] as $node) {
