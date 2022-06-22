@@ -12,6 +12,8 @@ class Input extends AbstractIO
         $this->value = $value;
         $this->set = true;
 
+        // @fixme; doesn't seem like the job of the Input directly to do this...
+        // for now, it works.
         if ($this->getHost()->canRun()) {
             $this->getHost()->run();
         }
