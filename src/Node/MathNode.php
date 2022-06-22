@@ -2,6 +2,8 @@
 
 namespace Flow\Node;
 
+use Flow\Base\AbstractNode;
+
 class MathNode extends AbstractNode
 {
     public function getInputs(): array

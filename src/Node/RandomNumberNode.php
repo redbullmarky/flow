@@ -2,6 +2,8 @@
 
 namespace Flow\Node;
 
+use Flow\Base\AbstractNode;
+
 class RandomNumberNode extends AbstractNode
 {
     public function getOutputs(): array

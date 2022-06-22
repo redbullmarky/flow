@@ -2,8 +2,9 @@
 
 namespace Flow\Node;
 
+use Flow\Base\AbstractNode;
+use Flow\Base\FlowException;
 use FlowJS\FlowJS;
-use Flow\FlowException;
 use V8JsScriptException;
 
 class CodeNode extends AbstractNode

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flow;
+namespace Flow\Base;
 
 /**
  * Represents all nodes in a flow

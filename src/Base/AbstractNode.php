@@ -1,9 +1,9 @@
 <?php
 
-namespace Flow\Node;
+namespace Flow\Base;
 
-use Flow\FlowException;
-use Flow\NodeInterface;
+use Flow\Base\FlowException;
+use Flow\Base\NodeInterface;
 
 abstract class AbstractNode implements NodeInterface
 {

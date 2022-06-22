@@ -2,7 +2,8 @@
 
 namespace Flow;
 
-use Flow\FlowException;
+use Flow\Base\FlowException;
+use Flow\Base\NodeInterface;
 
 class Runner
 {

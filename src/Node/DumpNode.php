@@ -2,6 +2,8 @@
 
 namespace Flow\Node;
 
+use Flow\Base\AbstractNode;
+
 class DumpNode extends AbstractNode
 {
     public function getInputs(): array
