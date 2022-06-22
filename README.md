@@ -16,8 +16,8 @@ $runner->run();
 ## Todo
 Key known issues at this point, mainly:
 
-[ ] Emit proper events when an Input value is set to invoke execution of nodes
-[ ] Debugging features
-[ ] Type checking
+- [ ] Emit proper events when an Input value is set to invoke execution of nodes
+- [ ] Debugging features
+- [ ] Type checking
 
 Otherwise, plenty more in the pipeline.
