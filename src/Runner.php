@@ -21,7 +21,6 @@ class Runner
      */
     public function load(string $filename): void
     {
-
         if (!$f = file_get_contents($filename)) {
             throw new FlowException('Cannot open ' . basename($filename));
         }
@@ -77,7 +76,7 @@ class Runner
     }
 
     /**
-     * Run the flow, passing in optional array of inputs
+     * Run the flow from all nodes that don't provide inputs
      *
      * @return void
      */
