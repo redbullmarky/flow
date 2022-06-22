@@ -2,35 +2,24 @@
 
 namespace Flow\Base;
 
-abstract class AbstractIO
+/**
+ * Represents an input/output datapoint
+ */
+abstract class AbstractIO extends AbstractDatapoint
 {
-    protected AbstractNode $host;
-    protected string $name;
-    protected string $type;
+    /**
+     * Connections this datapoint is paired with
+     *
+     * @var array
+     */
     protected array $connections = [];
 
-    public function __construct(AbstractNode $host, string $name, string $type = 'any')
-    {
-        $this->host = $host;
-        $this->name = $name;
-        $this->type = $type;
-    }
-
-    public function getHost(): AbstractNode
-    {
-        return $this->host;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
+    /**
+     * Connect to another IO datapoint
+     *
+     * @param AbstractIO $other The datapoint to pair with
+     * @param bool $reciprocate Whether to set the reverse connection
+     */
     public function connect(AbstractIO $other, bool $reciprocate = true)
     {
         $this->connections[$other->getName()] = $other;
@@ -38,6 +27,4 @@ abstract class AbstractIO
             $other->connect($this, false);
         }
     }
-
-    abstract public function setValue($value);
 }
