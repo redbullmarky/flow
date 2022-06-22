@@ -10,11 +10,12 @@ class CodeNode extends AbstractNode
 {
     public function build(): void
     {
-        $this->addInput(new Input('foo'));
-        $this->addOutput(new Output('bar'));
+        $this->addInput(new Input($this, 'foo'));
+        $this->addOutput(new Output($this, 'bar'));
     }
 
-    public function execute(): void
+    public function run(): void
     {
+        $this->getOutput('bar')->setValue('i am code output! input was ' . $this->getInput('foo')->getValue());
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Flow;
 
+use Flow\Base\AbstractNode;
 use Flow\Base\FlowException;
-use Flow\Base\NodeInterface;
 use Throwable;
 
 class Runner
@@ -46,12 +46,12 @@ class Runner
         return $this;
     }
 
-    public function addNode(NodeInterface $node): NodeInterface
+    public function addNode(AbstractNode $node): AbstractNode
     {
         return $this->nodes[$node->getIdentifier()] = $node;
     }
 
-    public function getNode(string $identifier): NodeInterface
+    public function getNode(string $identifier): AbstractNode
     {
         if (!isset($this->nodes[$identifier])) {
             throw new FlowException('No node with the identifier \'' . $identifier . '\'');
@@ -61,6 +61,10 @@ class Runner
 
     public function run(): void
     {
-        dump($this);
+        foreach ($this->nodes as $node) {
+            if (!$node->getInputs()) {
+                $node->run();
+            }
+        }
     }
 }

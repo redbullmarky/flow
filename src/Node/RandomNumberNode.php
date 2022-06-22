@@ -9,10 +9,11 @@ class RandomNumberNode extends AbstractNode
 {
     public function build(): void
     {
-        $this->addOutput(new Output('number', 'integer'));
+        $this->addOutput(new Output($this, 'number', 'integer'));
     }
 
-    public function execute(): void
+    public function run(): void
     {
+        $this->getOutput('number')->setValue(rand(0, 1000));
     }
 }

@@ -4,12 +4,21 @@ namespace Flow\Base;
 
 abstract class AbstractIO
 {
-    private $connections = [];
+    protected AbstractNode $host;
+    protected string $name;
+    protected string $type;
+    protected array $connections = [];
 
-    public function __construct(string $name, string $type = 'any')
+    public function __construct(AbstractNode $host, string $name, string $type = 'any')
     {
+        $this->host = $host;
         $this->name = $name;
         $this->type = $type;
+    }
+
+    public function getHost(): AbstractNode
+    {
+        return $this->host;
     }
 
     public function getName(): string

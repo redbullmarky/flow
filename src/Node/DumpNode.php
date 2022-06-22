@@ -9,10 +9,11 @@ class DumpNode extends AbstractNode
 {
     public function build(): void
     {
-        $this->addInput(new Input('input'));
+        $this->addInput(new Input($this, 'input'));
     }
 
-    public function execute(): void
+    public function run(): void
     {
+        dump($this->getInput('input')->getValue());
     }
 }

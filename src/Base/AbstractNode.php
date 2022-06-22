@@ -7,7 +7,7 @@ use Flow\Base\Input;
 use Flow\Base\Option;
 use Flow\Base\Output;
 
-abstract class AbstractNode implements NodeInterface
+abstract class AbstractNode
 {
     private string $identifier;
     private ?array $inputs = null;
@@ -27,7 +27,7 @@ abstract class AbstractNode implements NodeInterface
 
     abstract public function build(): void;
 
-    abstract public function execute(): void;
+    abstract public function run(): void;
 
     public function addInput(Input $input): Input
     {
@@ -42,10 +42,14 @@ abstract class AbstractNode implements NodeInterface
         return $this->inputs[$name];
     }
 
+    public function getInputs(): ?array
+    {
+        return $this->inputs;
+    }
+
     public function addOutput(Output $output): Output
     {
         return $this->outputs[$output->getName()] = $output;
-
     }
 
     public function getOutput(string $name): Output
@@ -54,6 +58,11 @@ abstract class AbstractNode implements NodeInterface
             throw new FlowException('No output for node ' . $this->getIdentifier() . ': ' . $name);
         }
         return $this->outputs[$name];
+    }
+
+    public function getOuputs(): ?array
+    {
+        return $this->outputs;
     }
 
     public function addOption(Option $option): Option
@@ -68,5 +77,20 @@ abstract class AbstractNode implements NodeInterface
             throw new FlowException('No option for node ' . $this->getIdentifier() . ': ' . $name);
         }
         return $this->options[$name];
+    }
+
+    public function getOptions(): ?array
+    {
+        return $this->options;
+    }
+
+    public function canRun(): bool
+    {
+        foreach ($this->getInputs() as $input) {
+            if (!$input->hasValue()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

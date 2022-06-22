@@ -10,12 +10,15 @@ class MathNode extends AbstractNode
 {
     public function build(): void
     {
-        $this->addInput(new Input('number1', 'integer'));
-        $this->addInput(new Input('number2', 'integer'));
-        $this->addOutput(new Output('result', 'integer'));
+        $this->addInput(new Input($this, 'number1', 'integer'));
+        $this->addInput(new Input($this, 'number2', 'integer'));
+        $this->addOutput(new Output($this, 'result', 'integer'));
     }
 
-    public function execute(): void
+    public function run(): void
     {
+        $in1 = $this->getInput('number1')->getValue();
+        $in2 = $this->getInput('number2')->getValue();
+        $this->getOutput('result')->setValue($in1 + $in2);
     }
 }
