@@ -4,20 +4,24 @@ namespace Flow\Base;
 
 class Option extends AbstractDatapoint
 {
-    private bool $set = false;
     private $value;
+
+    public function __construct(AbstractNode $host, string $name, string $type = 'any', $default = null)
+    {
+        parent::__construct($host, $name, $type);
+        $this->value = $default;
+    }
 
     public function setValue($value)
     {
         $this->value = $value;
-        $this->set = true;
 
         // @fixme / @todo; notify of update?
     }
 
     public function hasValue(): bool
     {
-        return $this->set;
+        return isset($this->value);
     }
 
     public function getValue()

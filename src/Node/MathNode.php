@@ -14,7 +14,7 @@ class MathNode extends AbstractNode
         $this->addInput(new Input($this, 'number1', 'integer'));
         $this->addInput(new Input($this, 'number2', 'integer'));
         $this->addOutput(new Output($this, 'result', 'integer'));
-        $this->addOption(new Option($this, 'operator', 'string'))->setValue('+');
+        $this->addOption(new Option($this, 'operator', 'string', '+'));
     }
 
     public function run(): void

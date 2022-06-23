@@ -58,7 +58,6 @@ class Runner
 
                 $fromOutput->connect($toInput);
             }
-
         }
 
         return $this;

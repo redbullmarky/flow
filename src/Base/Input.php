@@ -4,13 +4,11 @@ namespace Flow\Base;
 
 class Input extends AbstractIO
 {
-    private bool $set = false;
     private $value;
 
     public function setValue($value)
     {
         $this->value = $value;
-        $this->set = true;
 
         // @fixme; doesn't seem like the job of the Input directly to do this...
         // for now, it works.
@@ -21,11 +19,11 @@ class Input extends AbstractIO
 
     public function hasValue(): bool
     {
-        return $this->set;
+        return isset($this->value);
     }
 
     public function getValue()
     {
-        return $this->value;
+        return $this->value ?? null;
     }
 }
