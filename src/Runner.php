@@ -31,7 +31,6 @@ class Runner
         }
 
         $connections = [];
-        $options = [];
 
         // main nodes & options
         foreach ($definition['nodes'] as $nodeDefinition) {
