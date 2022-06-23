@@ -27,7 +27,7 @@ class MathNode extends AbstractNode
         $expression = sprintf("%d %.1s %d", $in1, $op, $in2);
         $code = "\$result = {$expression};";
         eval($code);
-dump($expression);
+
         $this->getOutput('result')->setValue($result);
     }
 }
